@@ -8,6 +8,7 @@ urlpatterns = [
     path('february', views.february, name='february'),
     path('march', views.march, name='march'),
     path('april', views.april, name='april'),
-    path('<month>', views.monthly_challenge, name='monthly_challenge')
+    path('<str:month>', views.monthly_challenge, name='monthly_challenge'),
+    path('month_num/<int:month_num>', views.monthly_challenge_by_number, name='monthly_challenge_by_number'),
 
 ]
