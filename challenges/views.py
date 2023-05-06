@@ -74,11 +74,17 @@ def monthly_challenge(request, month):
     # else:
     #     challenge_text = "<h1 style='text-align: center; color: red; margin-top:50px;'>Not a valid month."
     month = month.lower()
+    title = "Monthly Challenge"
+    heading = "This Month's Challenge"
     try:
         challenge_text = monthly_challenges[month]
         print(challenge_text)
-        response_text = f"<h1 style='text-align: center; color: orange; margin-top:50px;'>{ challenge_text }</h1><br><br><a href='/' style=' text-decoration: none;'>View all months...</a>"
-        return HttpResponse(response_text)
+        return render(request, "challenges/challenge.html", {
+           "text": challenge_text,
+           "month": month,
+           "title": title,
+           "heading": heading,
+        })
     except:
         return HttpResponseNotFound("<h1 style='text-align: center; font-size: 50px; color: Maroon; margin-top:50px;'>Please enter a valid month.</> <br><br> <a href=''></a>")
     
